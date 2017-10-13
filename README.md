@@ -13,7 +13,7 @@ At minimum a connection string and table name are required.
 
 To use a connection string from the `<connectionStrings>` element of your application config file, specify its name as the value of the connection string.
 
-> Note: Using configuration string from `App.config` and `Web.config` files is not supported by .NET Standard.
+> Note: Using connection string from `App.config` and `Web.config` files is not supported by .NET Standard.
 
 #### Code
 
