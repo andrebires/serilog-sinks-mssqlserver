@@ -13,8 +13,6 @@ At minimum a connection string and table name are required.
 
 To use a connection string from the `<connectionStrings>` element of your application config file, specify its name as the value of the connection string.
 
-> Note: Using connection string from `App.config` and `Web.config` files is not supported by .NET Standard.
-
 #### Code
 
 ```csharp
@@ -130,8 +128,6 @@ However, if necessary, then the properties being saved in their own columns can 
 
 
 ### XML configuration for columns
-
-> Note: This is not supported by .NET Standard.
 
 Columns can be defined with the name and data type of the column in SQL Server. Columns specified must match database table exactly. DataType is case sensitive, based on SQL type (excluding precision/length). 
 

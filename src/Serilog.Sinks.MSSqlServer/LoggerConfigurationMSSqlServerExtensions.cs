@@ -64,7 +64,6 @@ namespace Serilog
 
             var defaultedPeriod = period ?? MSSqlServerSink.DefaultPeriod;
 
-#if NET45
             MSSqlServerConfigurationSection serviceConfigSection =
                ConfigurationManager.GetSection("MSSqlServerSettingsSection") as MSSqlServerConfigurationSection;
 
@@ -77,7 +76,6 @@ namespace Serilog
                 }
                 GenerateDataColumnsFromConfig(serviceConfigSection, columnOptions);
             }
-#endif
 
             connectionString = GetConnectionString(connectionString);
 
@@ -108,7 +106,6 @@ namespace Serilog
             // If there are no `=`, attempt to pull the named value from config
             if (nameOrConnectionString.IndexOf('=') < 0)
             {
-#if NET45
                 var cs = ConfigurationManager.ConnectionStrings[nameOrConnectionString];
                 if (cs != null)
                 {
@@ -118,15 +115,11 @@ namespace Serilog
                 {
                     SelfLog.WriteLine("MSSqlServer sink configured value {0} is not found in ConnectionStrings settings and does not appear to be a raw connection string.", nameOrConnectionString);
                 }
-#else
-                throw new NotSupportedException("Configuration connection strings are not supported");
-#endif
             }
 
             return nameOrConnectionString;
         }
 
-#if NET45
         /// <summary>
         /// Generate an array of DataColumns using the supplied MSSqlServerConfigurationSection,
         ///     which is an array of keypairs defining the SQL column name and SQL data type
@@ -199,6 +192,5 @@ namespace Serilog
                 columnOptions.AdditionalDataColumns.Add(column);
             }
         }
-#endif
     }
 }
