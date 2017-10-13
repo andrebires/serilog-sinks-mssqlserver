@@ -146,7 +146,7 @@ namespace Serilog.Sinks.MSSqlServer
                             copy.ColumnMappings.Add(mapping);
                         }
 
-                        await copy.WriteToServerAsync(_eventsTable).ConfigureAwait(false);
+                        await copy.WriteToServerAsync(_eventsTable.CreateDataReader()).ConfigureAwait(false);
                     }
                 }
             }
